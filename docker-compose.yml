@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+
+  wordpress:
+    container_name: wp
+    build:
+      context: .
+      dockerfile: ./wp/Dockerfile
+    restart: always
+    image: endl11/app:latest
+    ports:
+      - 8080:80
+    volumes:
+      - wordpress:/var/www/html
+
+  db:
+    container_name: database
+    image: endl11/db:latest
+    build:
+      context: .
+      dockerfile: ./db/Dockerfile
+    restart: always
+    volumes:
+      - db:/var/lib/mysql
+
+volumes:
+  wordpress:
+  db:

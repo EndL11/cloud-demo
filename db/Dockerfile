@@ -1,0 +1,6 @@
+FROM mysql:5.7
+
+ENV MYSQL_DATABASE='exampledb'
+ENV MYSQL_USER='exampleuser'
+ENV MYSQL_PASSWORD='examplepass'
+ENV MYSQL_ROOT_PASSWORD='1'
