@@ -2,21 +2,17 @@ terraform {
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "~> 3.0"
+      version = "~> 4.16"
     }
   }
 }
 
-# Configure the AWS Provider
 provider "aws" {
- access_key=var.access_key
- secret_key=var.secret_key
- region=var.region
+  region = "us-east-1"
 }
 
-# Create a VPC
 resource "aws_instance" "application" {
-  ami			  = "ami-052efd3df9dad4825"
+  ami			  = "ami-08d4ac5b634553e16"
   instance_type  	  = "t2.micro"
   vpc_security_group_ids = [aws_security_group.security_demo.id]
   user_data              = file("init.sh")
